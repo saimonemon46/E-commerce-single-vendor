@@ -1,0 +1,596 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ElegantTex – Home Covers & More</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Playfair+Display:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <!-- ===== TOP ANNOUNCEMENT BAR ===== -->
+    <div class="announcement-bar">
+      <div class="announcement-inner">
+        <i class="fa-solid fa-couch me-2"></i>
+        GET UPTO 17% DISCOUNT RIGHT NOW &nbsp;|&nbsp; USE CODE:
+        <strong>ELEGANT17</strong>
+        <i class="fa-solid fa-couch ms-2"></i>
+      </div>
+    </div>
+
+    <!-- ===== HEADER ===== -->
+    <header class="site-header">
+      <div class="container-fluid px-4">
+        <div class="row align-items-center py-2 g-2">
+          <!-- Logo -->
+          <div class="col-auto">
+            <a href="index.html" class="brand-logo">
+              <span class="brand-icon"
+                ><i class="fa-solid fa-layer-group"></i
+              ></span>
+              <span class="brand-text">Elegant<strong>Tex</strong></span>
+            </a>
+          </div>
+          <!-- Search -->
+          <div class="col">
+            <div class="search-wrapper">
+              <input
+                type="text"
+                class="form-control search-input"
+                placeholder="I am shopping for..."
+              />
+              <button class="search-btn">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </button>
+            </div>
+          </div>
+          <!-- Header Actions -->
+          <div class="col-auto header-actions">
+            <span class="helpline"
+              ><i class="fa-solid fa-phone me-1"></i>+8801896224057</span
+            >
+            <a href="login.html" class="btn btn-outline-primary btn-sm ms-3">
+              <i class="fa-regular fa-user me-1"></i>Login
+            </a>
+            <a href="register.html" class="btn btn-primary btn-sm ms-2"
+              >Register</a
+            >
+            <a href="cart.html" class="cart-icon ms-3">
+              <i class="fa-solid fa-cart-shopping"></i>
+              <span class="cart-badge">3</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="main-nav">
+      <div class="container-fluid px-4">
+        <div class="row g-0 align-items-stretch">
+          <!-- Category Dropdown Toggle -->
+          <div class="col-auto">
+            <div class="category-toggle" id="categoryToggle">
+              <i class="fa-solid fa-bars me-2"></i> Categories
+              <span class="see-all">(See All)</span>
+              <i class="fa-solid fa-chevron-down ms-2 small"></i>
+            </div>
+            <!-- Category Dropdown -->
+            <div class="category-dropdown" id="categoryDropdown">
+              <a href="category.html?cat=sofa-cover"
+                ><i class="fa-solid fa-couch me-2"></i>Sofa Cover</a
+              >
+              <a href="category.html?cat=chair-cover"
+                ><i class="fa-solid fa-chair me-2"></i>Chair Cover</a
+              >
+              <a href="category.html?cat=table-covers"
+                ><i class="fa-solid fa-table me-2"></i>Table Covers</a
+              >
+              <a href="category.html?cat=dining-combo"
+                ><i class="fa-solid fa-utensils me-2"></i>Trendy Dining Combo
+                (3D)</a
+              >
+              <a href="category.html?cat=ac-covers"
+                ><i class="fa-solid fa-wind me-2"></i>AC Covers</a
+              >
+              <a href="category.html?cat=tv-covers"
+                ><i class="fa-solid fa-tv me-2"></i>TV Covers</a
+              >
+              <a href="category.html?cat=cushion-covers"
+                ><i class="fa-solid fa-circle me-2"></i>Cushion Covers</a
+              >
+              <a href="category.html?cat=carpet"
+                ><i class="fa-solid fa-rug me-2"></i>Carpet by ElegantTex</a
+              >
+            </div>
+          </div>
+          <!-- Nav Links -->
+          <div class="col nav-links-wrapper">
+            <ul class="nav-links">
+              <li><a href="index.html" class="active">Home</a></li>
+              <li><a href="best-selling.html">Best Selling</a></li>
+              <li><a href="wholesale.html">Wholesale</a></li>
+              <li><a href="new-collection.html">New Collection</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="blog.html">Blog</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ===== HERO SECTION ===== -->
+    <section class="hero-section">
+      <div class="container-fluid px-4">
+        <div class="row g-3">
+          <!-- Sidebar Categories -->
+          <div class="col-lg-2 d-none d-lg-block">
+            <div class="sidebar-categories">
+              <a href="category.html?cat=sofa-cover" class="sidebar-cat-item">
+                <i class="fa-solid fa-couch"></i> Sofa Cover
+              </a>
+              <a href="category.html?cat=chair-cover" class="sidebar-cat-item">
+                <i class="fa-solid fa-chair"></i> Chair Cover
+              </a>
+              <a href="category.html?cat=table-covers" class="sidebar-cat-item">
+                <i class="fa-solid fa-table"></i> Table Covers
+              </a>
+              <a href="category.html?cat=dining-combo" class="sidebar-cat-item">
+                <i class="fa-solid fa-utensils"></i> Dining Combo (3D)
+              </a>
+              <a href="category.html?cat=ac-covers" class="sidebar-cat-item">
+                <i class="fa-solid fa-wind"></i> AC Covers
+              </a>
+              <a href="category.html?cat=tv-covers" class="sidebar-cat-item">
+                <i class="fa-solid fa-tv"></i> TV Covers
+              </a>
+              <a
+                href="category.html?cat=cushion-covers"
+                class="sidebar-cat-item"
+              >
+                <i class="fa-solid fa-circle"></i> Cushion Covers
+              </a>
+              <a href="category.html?cat=carpet" class="sidebar-cat-item">
+                <i class="fa-solid fa-rug"></i> Carpet
+              </a>
+            </div>
+          </div>
+
+          <!-- Main Banner Slider -->
+          <div class="col-lg-7 col-md-8">
+            <div
+              id="heroBannerSlider"
+              class="carousel slide hero-slider"
+              data-bs-ride="carousel"
+            >
+              <div class="carousel-indicators">
+                <button
+                  type="button"
+                  data-bs-target="#heroBannerSlider"
+                  data-bs-slide-to="0"
+                  class="active"
+                ></button>
+                <button
+                  type="button"
+                  data-bs-target="#heroBannerSlider"
+                  data-bs-slide-to="1"
+                ></button>
+                <button
+                  type="button"
+                  data-bs-target="#heroBannerSlider"
+                  data-bs-slide-to="2"
+                ></button>
+              </div>
+              <div class="carousel-inner rounded-3 overflow-hidden">
+                <div class="carousel-item active">
+                  <div class="banner-slide banner-slide-1">
+                    <div class="banner-content">
+                      <span class="banner-badge">17% OFF</span>
+                      <h2>Feel the Ocean<br />On Your Sofa</h2>
+                      <p>
+                        Premium sofa covers that transform your living space
+                      </p>
+                      <a
+                        href="category.html?cat=sofa-cover"
+                        class="btn btn-white-outline"
+                        >Shop Now <i class="fa-solid fa-arrow-right ms-1"></i
+                      ></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <div class="banner-slide banner-slide-2">
+                    <div class="banner-content">
+                      <span class="banner-badge">12% OFF</span>
+                      <h2>Velvet Chair<br />Covers</h2>
+                      <p>Luxurious velvet covers for your dining chairs</p>
+                      <a
+                        href="category.html?cat=chair-cover"
+                        class="btn btn-white-outline"
+                        >Shop Now <i class="fa-solid fa-arrow-right ms-1"></i
+                      ></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <div class="banner-slide banner-slide-3">
+                    <div class="banner-content">
+                      <span class="banner-badge">New</span>
+                      <h2>3D Dining<br />Combo Sets</h2>
+                      <p>
+                        Complete table & chair cover sets in stunning 3D prints
+                      </p>
+                      <a
+                        href="category.html?cat=dining-combo"
+                        class="btn btn-white-outline"
+                        >Shop Now <i class="fa-solid fa-arrow-right ms-1"></i
+                      ></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button
+                class="carousel-control-prev"
+                type="button"
+                data-bs-target="#heroBannerSlider"
+                data-bs-slide="prev"
+              >
+                <span class="carousel-control-prev-icon"></span>
+              </button>
+              <button
+                class="carousel-control-next"
+                type="button"
+                data-bs-target="#heroBannerSlider"
+                data-bs-slide="next"
+              >
+                <span class="carousel-control-next-icon"></span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Today's Deals Sidebar -->
+          <div class="col-lg-3 col-md-4">
+            <div class="todays-deal-box">
+              <div class="deal-box-header">
+                <span>Today's Deal</span>
+                <span class="badge-hot">HOT</span>
+              </div>
+              <div class="deal-items" id="todaysDealItems">
+                <!-- Populated by JS -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CATEGORY ICONS SCROLL ===== -->
+    <section class="category-scroll-section py-4">
+      <div class="container-fluid px-4">
+        <div class="category-scroll-wrapper">
+          <div class="category-scroll" id="categoryScroll">
+            <a href="category.html?cat=sofa-cover" class="cat-pill">
+              <div
+                class="cat-pill-img"
+                style="
+                  background: linear-gradient(135deg, #ff049e22, #ff6bcd22);
+                "
+              >
+                <i class="fa-solid fa-couch" style="color: var(--primary)"></i>
+              </div>
+              <span>Sofa Cover</span>
+            </a>
+            <a href="category.html?cat=chair-cover" class="cat-pill">
+              <div
+                class="cat-pill-img"
+                style="
+                  background: linear-gradient(135deg, #3490f322, #3490f322);
+                "
+              >
+                <i class="fa-solid fa-chair" style="color: #3490f3"></i>
+              </div>
+              <span>Chair Cover</span>
+            </a>
+            <a href="category.html?cat=table-covers" class="cat-pill">
+              <div
+                class="cat-pill-img"
+                style="
+                  background: linear-gradient(135deg, #ffc51922, #ffc51922);
+                "
+              >
+                <i class="fa-solid fa-table" style="color: #e6a800"></i>
+              </div>
+              <span>Table Covers</span>
+            </a>
+            <a href="category.html?cat=dining-combo" class="cat-pill">
+              <div
+                class="cat-pill-img"
+                style="
+                  background: linear-gradient(135deg, #28a74522, #28a74522);
+                "
+              >
+                <i class="fa-solid fa-utensils" style="color: #28a745"></i>
+              </div>
+              <span>Dining Combo</span>
+            </a>
+            <a href="category.html?cat=ac-covers" class="cat-pill">
+              <div
+                class="cat-pill-img"
+                style="
+                  background: linear-gradient(135deg, #17a2b822, #17a2b822);
+                "
+              >
+                <i class="fa-solid fa-wind" style="color: #17a2b8"></i>
+              </div>
+              <span>AC Covers</span>
+            </a>
+            <a href="category.html?cat=tv-covers" class="cat-pill">
+              <div
+                class="cat-pill-img"
+                style="
+                  background: linear-gradient(135deg, #6f42c122, #6f42c122);
+                "
+              >
+                <i class="fa-solid fa-tv" style="color: #6f42c1"></i>
+              </div>
+              <span>TV Covers</span>
+            </a>
+            <a href="category.html?cat=cushion-covers" class="cat-pill">
+              <div
+                class="cat-pill-img"
+                style="
+                  background: linear-gradient(135deg, #ef486a22, #ef486a22);
+                "
+              >
+                <i class="fa-solid fa-circle" style="color: #ef486a"></i>
+              </div>
+              <span>Cushion Covers</span>
+            </a>
+            <a href="category.html?cat=carpet" class="cat-pill">
+              <div
+                class="cat-pill-img"
+                style="
+                  background: linear-gradient(135deg, #ff604222, #ff604222);
+                "
+              >
+                <i class="fa-solid fa-rug" style="color: #ff6042"></i>
+              </div>
+              <span>Carpet</span>
+            </a>
+          </div>
+          <button class="cat-scroll-arrow cat-scroll-right" id="catScrollRight">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FEATURED PRODUCTS ===== -->
+    <section class="products-section py-4">
+      <div class="container-fluid px-4">
+        <div class="section-header">
+          <h3 class="section-title">Featured Products</h3>
+          <a href="products.html" class="section-link"
+            >View All <i class="fa-solid fa-arrow-right"></i
+          ></a>
+        </div>
+        <div class="row g-3" id="featuredProducts">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PROMO BANNERS ===== -->
+    <section class="promo-banners py-4">
+      <div class="container-fluid px-4">
+        <div class="row g-3">
+          <div class="col-md-4">
+            <div class="promo-banner promo-banner-1">
+              <div class="promo-badge">17% ছাড়া</div>
+              <div class="promo-text">
+                <p class="promo-sub">সোফায় বসে</p>
+                <p class="promo-main">সাগরের ফিল</p>
+              </div>
+              <a href="category.html?cat=sofa-cover" class="promo-cta"
+                >ক্লিক করুন</a
+              >
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="promo-banner promo-banner-2">
+              <div class="promo-badge">17% ছাড়া</div>
+              <div class="promo-text">
+                <p class="promo-sub">পাহাড়ে বসে</p>
+                <p class="promo-main">অস্থির ফিল</p>
+              </div>
+              <a href="category.html?cat=sofa-cover" class="promo-cta"
+                >ক্লিক করুন</a
+              >
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="promo-banner promo-banner-3">
+              <div class="promo-badge">17% ছাড়া</div>
+              <div class="promo-text">
+                <p class="promo-sub">হিম শীতল পাহাড়ে</p>
+                <p class="promo-main">যদি বসা যায়</p>
+              </div>
+              <a href="category.html?cat=sofa-cover" class="promo-cta"
+                >ক্লিক করুন</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== BEST SELLING ===== -->
+    <section class="products-section py-4">
+      <div class="container-fluid px-4">
+        <div class="section-header">
+          <h3 class="section-title">Best Selling</h3>
+          <a href="best-selling.html" class="section-link"
+            >View All <i class="fa-solid fa-arrow-right"></i
+          ></a>
+        </div>
+        <div class="row g-3" id="bestSellingProducts">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== WHY CHOOSE US ===== -->
+    <section class="features-section py-5">
+      <div class="container-fluid px-4">
+        <div class="row g-3 text-center">
+          <div class="col-6 col-md-3">
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="fa-solid fa-truck-fast"></i>
+              </div>
+              <h6>Fast Delivery</h6>
+              <p>Across Bangladesh in 2-3 days</p>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="fa-solid fa-rotate-left"></i>
+              </div>
+              <h6>Easy Returns</h6>
+              <p>7-day hassle-free return policy</p>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="fa-solid fa-shield-halved"></i>
+              </div>
+              <h6>Secure Payment</h6>
+              <p>100% secure checkout</p>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="fa-brands fa-whatsapp"></i>
+              </div>
+              <h6>24/7 Support</h6>
+              <p>WhatsApp & phone support</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="site-footer">
+      <div class="container-fluid px-4">
+        <div class="row g-4 py-5">
+          <div class="col-lg-3 col-md-6">
+            <a href="index.html" class="brand-logo mb-3 d-inline-flex">
+              <span class="brand-icon"
+                ><i class="fa-solid fa-layer-group"></i
+              ></span>
+              <span class="brand-text text-white"
+                >Elegant<strong>Tex</strong></span
+              >
+            </a>
+            <p class="footer-desc">
+              Bangladesh's #1 sofa & furniture cover brand. Premium quality,
+              affordable prices.
+            </p>
+            <div class="social-links mt-3">
+              <a href="#"><i class="fa-brands fa-facebook"></i></a>
+              <a href="#"><i class="fa-brands fa-instagram"></i></a>
+              <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+              <a href="#"><i class="fa-brands fa-youtube"></i></a>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-6">
+            <h6 class="footer-heading">Quick Links</h6>
+            <ul class="footer-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="best-selling.html">Best Selling</a></li>
+              <li><a href="wholesale.html">Wholesale</a></li>
+              <li><a href="new-collection.html">New Collection</a></li>
+              <li><a href="blog.html">Blog</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-2 col-md-6">
+            <h6 class="footer-heading">Categories</h6>
+            <ul class="footer-links">
+              <li><a href="category.html?cat=sofa-cover">Sofa Cover</a></li>
+              <li><a href="category.html?cat=chair-cover">Chair Cover</a></li>
+              <li><a href="category.html?cat=table-covers">Table Covers</a></li>
+              <li><a href="category.html?cat=ac-covers">AC Covers</a></li>
+              <li><a href="category.html?cat=carpet">Carpet</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-2 col-md-6">
+            <h6 class="footer-heading">Policy</h6>
+            <ul class="footer-links">
+              <li><a href="privacy.html">Privacy Policy</a></li>
+              <li><a href="terms.html">Terms & Conditions</a></li>
+              <li><a href="refund.html">Refund Policy</a></li>
+              <li><a href="shipping.html">Shipping Info</a></li>
+              <li><a href="faq.html">FAQs</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-3">
+            <h6 class="footer-heading">Contact Us</h6>
+            <p>
+              <i class="fa-solid fa-phone me-2 text-primary"></i>+8801896224057
+            </p>
+            <p>
+              <i class="fa-brands fa-whatsapp me-2 text-success"></i
+              >+8801896224057
+            </p>
+            <p>
+              <i class="fa-solid fa-envelope me-2 text-primary"></i
+              >info@eleganttex.com.bd
+            </p>
+            <p>
+              <i class="fa-solid fa-location-dot me-2 text-primary"></i>Dhaka,
+              Bangladesh
+            </p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>
+            &copy; 2025 ElegantTex. All rights reserved. Developed by
+            <a href="#">WebDev BD</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a
+      href="https://wa.me/8801896224057"
+      class="whatsapp-float"
+      target="_blank"
+    >
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Cart Toast -->
+    <div class="cart-toast" id="cartToast">
+      <i class="fa-solid fa-check-circle me-2"></i> Added to cart!
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>
