@@ -23,8 +23,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 include 'includes/head.php';
-include 'includes/announcement.php';
-include 'includes/header.php';
+// include 'includes/announcement.php';
+// include 'includes/header.php';
 ?>
 
 <main class="py-5" style="background:var(--bg-light);min-height:70vh">
@@ -73,5 +73,3 @@ include 'includes/header.php';
     </div>
   </div>
 </main>
-
-<?php include 'includes/footer.php'; ?>

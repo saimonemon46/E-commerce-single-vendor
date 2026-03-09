@@ -16,7 +16,7 @@ $sidebar_cats = [
 ?>
 <div class="sidebar-categories">
   <?php foreach ($sidebar_cats as $cat): ?>
-  <a href="../category.php?cat=<?= $cat['slug'] ?>" class="sidebar-cat-item">
+  <a href="<?= SITE_URL ?>/category.php?cat=<?= $cat['slug'] ?>" class="sidebar-cat-item">
     <i class="fa-solid <?= $cat['icon'] ?>"></i> <?= $cat['label'] ?>
   </a>
   <?php endforeach; ?>
