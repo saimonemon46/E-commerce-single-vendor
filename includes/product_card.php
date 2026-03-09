@@ -28,14 +28,16 @@ $p_image    = $product['image']         ?? '';
 $badge_class = ($p_btype === 'new') ? 'badge-new' : 'badge-sale';
 
 // Build star HTML
-function render_stars(float $rating): string {
-    $html = '';
-    for ($i = 1; $i <= 5; $i++) {
-        if ($rating >= $i)         $html .= '<i class="fa-solid fa-star"></i>';
-        elseif ($rating >= $i-0.5) $html .= '<i class="fa-solid fa-star-half-stroke"></i>';
-        else                       $html .= '<i class="fa-regular fa-star"></i>';
+if (!function_exists('render_stars')) {
+    function render_stars(float $rating): string {
+        $html = '';
+        for ($i = 1; $i <= 5; $i++) {
+            if ($rating >= $i)         $html .= '<i class="fa-solid fa-star"></i>';
+            elseif ($rating >= $i-0.5) $html .= '<i class="fa-solid fa-star-half-stroke"></i>';
+            else                       $html .= '<i class="fa-regular fa-star"></i>';
+        }
+        return $html;
     }
-    return $html;
 }
 ?>
 <div class="col-6 col-md-4 col-lg-3">
