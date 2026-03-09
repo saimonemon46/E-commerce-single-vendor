@@ -2104,22 +2104,33 @@ img {
   overflow: hidden;
 }
 
-/* ---- Light hero: blog + contact (white bg, dark text) ---- */
+/* ---- Light hero: blog + contact — same gradient as wholesale ---- */
 .page-hero-light {
-  background: var(--bg-light);
-  border-bottom: 1px solid var(--border);
+  background: linear-gradient(135deg, #1a0533 0%, #3d0068 45%, #ff049e 100%);
 }
+.page-hero-light::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.page-hero-light .container-fluid {
+  position: relative;
+  z-index: 2;
+}
+/* Title & desc now white — matching all other coloured heroes */
 .page-hero-title-dark {
   font-family: "Playfair Display", serif;
   font-size: 36px;
   font-weight: 700;
-  color: var(--dark);
+  color: #fff;
   margin-bottom: 10px;
   line-height: 1.2;
 }
 .page-hero-desc-dark {
   font-size: 15px;
-  color: var(--text-muted);
+  color: rgba(255, 255, 255, 0.8);
   margin: 0;
 }
 
