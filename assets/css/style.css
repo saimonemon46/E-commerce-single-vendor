@@ -1033,18 +1033,61 @@ img {
 
 /* ---- Breadcrumb ---- */
 .page-breadcrumb {
-  background: var(--bg-light);
-  padding: 12px 0;
+  background: var(--white);
   border-bottom: 1px solid var(--border);
-  font-size: 13px;
+  padding: 0;
 }
-.page-breadcrumb a {
-  color: var(--primary);
-  font-weight: 600;
+.bc-inner {
+  padding-top: 0;
+  padding-bottom: 0;
 }
-.page-breadcrumb span {
+.bc-list {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 10px 0;
+  flex-wrap: wrap;
+  gap: 2px;
+}
+.bc-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.bc-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
   color: var(--text-muted);
-  margin: 0 6px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 4px 8px;
+  border-radius: 5px;
+  transition: var(--transition);
+}
+.bc-link:hover {
+  color: var(--primary);
+  background: var(--primary-light);
+}
+.bc-link i.fa-house {
+  font-size: 12px;
+}
+.bc-sep {
+  color: var(--border);
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+}
+.bc-current {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--primary);
+  padding: 4px 8px;
+  background: var(--primary-light);
+  border-radius: 5px;
+  display: inline-block;
 }
 
 /* ---- Filter Sidebar (category page) ---- */
@@ -2033,6 +2076,7 @@ img {
   .promo-banners .container-fluid,
   .features-section .container-fluid,
   .site-footer .container-fluid,
+  .page-breadcrumb .bc-inner,
   main .container-fluid {
     max-width: 1400px;
     margin-left: auto;
