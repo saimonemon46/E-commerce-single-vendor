@@ -66,4 +66,8 @@
           </div>
         </div>
       </div>
+      <?php include 'includes/nav.php'; ?>
     </header>
+    <?php include 'includes/sidebar.php'; ?>
+
+
