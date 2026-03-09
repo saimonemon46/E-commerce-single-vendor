@@ -2002,3 +2002,42 @@ img {
 .secure-note i {
   color: #28a745;
 }
+
+/* =============================================
+   DESKTOP CENTERING — large screens only
+   Mobile (< 1200px) completely unaffected
+   ============================================= */
+@media (min-width: 1200px) {
+  /* Wrap the whole page body content in max-width */
+  .page-wrap {
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+  }
+
+  /* Header inner content centered */
+  .site-header .container-fluid,
+  .main-nav .container-fluid {
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  /* All page sections inner content centered */
+  .hero-section .container-fluid,
+  .category-scroll-section .container-fluid,
+  .products-section .container-fluid,
+  .promo-banners .container-fluid,
+  .features-section .container-fluid,
+  .site-footer .container-fluid,
+  main .container-fluid {
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
