@@ -1,202 +1,155 @@
-<?php include 'includes/header.php'; ?>
+<?php
+// ============================================================
+//  ElegantTex — category.php  (Product Listing / Shop Page)
+// ============================================================
+require_once 'includes/config.php';
 
-    <!-- Breadcrumb -->
-    <div class="page-breadcrumb">
-      <div class="container-fluid px-4">
-        <a href="index.html">Home</a>
-        <span>›</span>
-        <span id="breadcrumbCat">Category Name</span>
-      </div>
-    </div>
+// Get current category slug from URL
+$cat_slug  = isset($_GET['cat']) ? trim($_GET['cat']) : '';
+$sort      = isset($_GET['sort']) ? $_GET['sort'] : 'default';
+$price_min = isset($_GET['price_min']) ? (int)$_GET['price_min'] : 0;
+$price_max = isset($_GET['price_max']) ? (int)$_GET['price_max'] : 99999;
+$page      = isset($_GET['page']) ? max(1, (int)$_GET['page']) : 1;
+$per_page  = 12;
 
-    <!-- Main Content -->
-    <main class="py-4">
-      <div class="container-fluid px-4">
-        <div class="row g-3">
-          <!-- Sidebar Filter -->
-          <?php include 'includes/sidebar.php'; ?>
+// Category meta map — replace with DB query
+$cat_meta = [
+    'sofa-cover'     => ['label' => 'Sofa Cover',               'count' => 24],
+    'chair-cover'    => ['label' => 'Chair Cover',              'count' => 18],
+    'table-covers'   => ['label' => 'Table Covers',             'count' => 12],
+    'dining-combo'   => ['label' => 'Trendy Dining Combo (3D)', 'count' => 8],
+    'ac-covers'      => ['label' => 'AC Covers',                'count' => 6],
+    'tv-covers'      => ['label' => 'TV Covers',                'count' => 9],
+    'cushion-covers' => ['label' => 'Cushion Covers',           'count' => 15],
+    'carpet'         => ['label' => 'Carpet',                   'count' => 11],
+];
+$current_cat   = $cat_meta[$cat_slug] ?? ['label' => 'All Products', 'count' => 0];
+$page_title    = $current_cat['label'];
+$active_nav    = '';
 
-          <!-- Products Area -->
-          <div class="col-lg-10">
-            <!-- Products Header -->
-            <div class="products-header">
-              <div>
-                <h5 class="section-title mb-0" id="catTitle">Category Name</h5>
-                <p class="products-count mt-1"><strong id="productCountDisplay">0</strong> products found</p>
-              </div>
-              <div class="d-flex align-items-center gap-2">
-                <select class="sort-select" id="sortSelect">
-                  <option value="default">Default Sorting</option>
-                  <option value="price_asc">Price: Low to High</option>
-                  <option value="price_desc">Price: High to Low</option>
-                  <option value="discount">Highest Discount</option>
-                  <option value="rating">Best Rated</option>
-                  <option value="newest">Newest First</option>
-                </select>
-                <div class="view-toggle">
-                  <button class="view-btn active" id="gridView" title="Grid View"><i class="fa-solid fa-grip"></i></button>
-                  <button class="view-btn" id="listView" title="List View"><i class="fa-solid fa-list"></i></button>
-                </div>
-              </div>
-            </div>
+// Mock products — replace with DB query + filters
+$all_products = [
+    ['id'=>1,  'name'=>'Velvet Chair Cover Coffee',       'price'=>2200,'compare_price'=>2500,'discount_pct'=>12,'badge'=>'-12%','badge_type'=>'sale','rating'=>4.5,'reviews'=>32, 'emoji'=>'🪑','category'=>'chair-cover'],
+    ['id'=>2,  'name'=>'Velvet Chair Cover Royal Blue',   'price'=>2200,'compare_price'=>2500,'discount_pct'=>12,'badge'=>'-12%','badge_type'=>'sale','rating'=>4.8,'reviews'=>48, 'emoji'=>'🪑','category'=>'chair-cover'],
+    ['id'=>3,  'name'=>'Velvet Chair Cover Deep Purple',  'price'=>2200,'compare_price'=>2500,'discount_pct'=>12,'badge'=>'-12%','badge_type'=>'sale','rating'=>4.6,'reviews'=>21, 'emoji'=>'🪑','category'=>'chair-cover'],
+    ['id'=>4,  'name'=>'Flower Print Sofa Cover',         'price'=>2500,'compare_price'=>3000,'discount_pct'=>17,'badge'=>'-17%','badge_type'=>'sale','rating'=>4.9,'reviews'=>76, 'emoji'=>'🛋️','category'=>'sofa-cover'],
+    ['id'=>5,  'name'=>'White Pint Sofa Cover',           'price'=>2500,'compare_price'=>3000,'discount_pct'=>17,'badge'=>'-17%','badge_type'=>'sale','rating'=>4.7,'reviews'=>54, 'emoji'=>'🛋️','category'=>'sofa-cover'],
+    ['id'=>6,  'name'=>'Blue Pint Sofa Cover',            'price'=>2500,'compare_price'=>3000,'discount_pct'=>17,'badge'=>'-17%','badge_type'=>'sale','rating'=>4.8,'reviews'=>63, 'emoji'=>'🛋️','category'=>'sofa-cover'],
+    ['id'=>7,  'name'=>'3D Dining Table Cover Set',       'price'=>3200,'compare_price'=>4000,'discount_pct'=>20,'badge'=>'New', 'badge_type'=>'new', 'rating'=>4.9,'reviews'=>89, 'emoji'=>'🍽️','category'=>'dining-combo'],
+    ['id'=>8,  'name'=>'Floral Cushion Cover (Set 4)',    'price'=>1200,'compare_price'=>1500,'discount_pct'=>20,'badge'=>'-20%','badge_type'=>'sale','rating'=>4.6,'reviews'=>44, 'emoji'=>'🛏️','category'=>'cushion-covers'],
+    ['id'=>9,  'name'=>'AC Cover Dust Guard',             'price'=>800, 'compare_price'=>1000,'discount_pct'=>20,'badge'=>'-20%','badge_type'=>'sale','rating'=>4.4,'reviews'=>28, 'emoji'=>'❄️','category'=>'ac-covers'],
+    ['id'=>10, 'name'=>'Geometric Carpet 5x7ft',          'price'=>4500,'compare_price'=>5500,'discount_pct'=>18,'badge'=>'-18%','badge_type'=>'sale','rating'=>4.8,'reviews'=>37, 'emoji'=>'🏡','category'=>'carpet'],
+    ['id'=>11, 'name'=>'TV Cover Dust Protector 43"',     'price'=>600, 'compare_price'=>750, 'discount_pct'=>20,'badge'=>'-20%','badge_type'=>'sale','rating'=>4.3,'reviews'=>19, 'emoji'=>'📺','category'=>'tv-covers'],
+    ['id'=>12, 'name'=>'Table Runner Embroidered',        'price'=>950, 'compare_price'=>1100,'discount_pct'=>14,'badge'=>'New', 'badge_type'=>'new', 'rating'=>4.5,'reviews'=>31, 'emoji'=>'🎨','category'=>'table-covers'],
+];
 
-            <!-- Active Filters -->
-            <div class="active-filters" id="activeFilters">
-              <!-- Populated by JS -->
-            </div>
+// Filter by category
+$products = $cat_slug
+    ? array_values(array_filter($all_products, fn($p) => $p['category'] === $cat_slug))
+    : $all_products;
 
-            <!-- Products Grid -->
-            <div class="row g-3" id="categoryProducts">
-              <!-- Populated by JS -->
-            </div>
+// Filter by price
+$products = array_values(array_filter($products, fn($p) => $p['price'] >= $price_min && $p['price'] <= $price_max));
 
-            <!-- Pagination -->
-            <nav>
-              <ul class="pagination" id="pagination">
-                <!-- Populated by JS -->
-              </ul>
-            </nav>
+// Sort
+usort($products, function($a, $b) use ($sort) {
+    return match($sort) {
+        'price_asc'  => $a['price'] <=> $b['price'],
+        'price_desc' => $b['price'] <=> $a['price'],
+        'discount'   => $b['discount_pct'] <=> $a['discount_pct'],
+        'rating'     => $b['rating'] <=> $a['rating'],
+        default      => 0,
+    };
+});
 
-<!-- Announcement Bar -->
-<?php include 'includes/announce.php'; ?>
+$total_products = count($products);
+$total_pages    = max(1, ceil($total_products / $per_page));
+$products       = array_slice($products, ($page - 1) * $per_page, $per_page);
 
-<!-- Header -->
-<header class="site-header">
-  <div class="container-fluid px-4">
-    <div class="row align-items-center py-2 g-2">
-      <div class="col-auto">
-        <a href="index.html" class="brand-logo">
-          <span class="brand-icon"><i class="fa-solid fa-layer-group"></i></span>
-          <span class="brand-text">Elegant<strong>Tex</strong></span>
-        </a>
-      </div>
-      <div class="col">
-        <div class="search-wrapper">
-          <input type="text" class="form-control search-input" placeholder="I am shopping for..."/>
-          <button class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
-        </div>
-      </div>
-      <div class="col-auto header-actions">
-        <a href="login.html" class="btn btn-outline-primary btn-sm ms-3"><i class="fa-regular fa-user me-1"></i>Login</a>
-        <a href="register.html" class="btn btn-primary btn-sm ms-2">Register</a>
-        <a href="cart.html" class="cart-icon ms-3">
-          <i class="fa-solid fa-cart-shopping"></i>
-          <span class="cart-badge">0</span>
-        </a>
-      </div>
-    </div>
-  </div>
-</header>
+$breadcrumbs = [
+    ['label' => 'Home',                  'href' => SITE_URL.'/index.php'],
+    ['label' => $current_cat['label']],
+];
 
-<!-- Navbar -->
-<nav class="main-nav">
-  <div class="container-fluid px-4">
-    <div class="row g-0 align-items-stretch">
-      <div class="col-auto">
-        <div class="category-toggle" id="categoryToggle">
-          <i class="fa-solid fa-bars me-2"></i> Categories
-          <i class="fa-solid fa-chevron-down ms-2 small"></i>
-        </div>
-        <div class="category-dropdown" id="categoryDropdown">
-          <a href="category.html?cat=sofa-cover"><i class="fa-solid fa-couch me-2"></i>Sofa Cover</a>
-          <a href="category.html?cat=chair-cover"><i class="fa-solid fa-chair me-2"></i>Chair Cover</a>
-          <a href="category.html?cat=table-covers"><i class="fa-solid fa-table me-2"></i>Table Covers</a>
-          <a href="category.html?cat=dining-combo"><i class="fa-solid fa-utensils me-2"></i>Dining Combo (3D)</a>
-          <a href="category.html?cat=ac-covers"><i class="fa-solid fa-wind me-2"></i>AC Covers</a>
-          <a href="category.html?cat=tv-covers"><i class="fa-solid fa-tv me-2"></i>TV Covers</a>
-          <a href="category.html?cat=cushion-covers"><i class="fa-solid fa-circle me-2"></i>Cushion Covers</a>
-          <a href="category.html?cat=carpet"><i class="fa-solid fa-rug me-2"></i>Carpet</a>
-        </div>
-      </div>
-      <div class="col nav-links-wrapper">
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="best-selling.html">Best Selling</a></li>
-          <li><a href="wholesale.html">Wholesale</a></li>
-          <li><a href="new-collection.html">New Collection</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="blog.html">Blog</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</nav>
+include 'includes/head.php';
+include 'includes/announcement.php';
+include 'includes/header.php';
+include 'includes/breadcrumb.php';
+?>
 
-<!-- Breadcrumb -->
-<div class="page-breadcrumb">
-  <div class="container-fluid px-4">
-    <a href="index.php">Home</a>
-    <span>›</span>
-    <span id="breadcrumbCat">Sofa Cover</span>
-  </div>
-</div>
-
-<!-- Main Content -->
 <main class="py-4">
   <div class="container-fluid px-4">
     <div class="row g-3">
 
-      <!-- Sidebar Filter -->
+      <!-- Filter Sidebar -->
       <div class="col-lg-2 d-none d-lg-block">
-        <div class="filter-sidebar">
-          <div class="filter-title"><i class="fa-solid fa-sliders me-2"></i>Filters</div>
+        <form method="GET" action="<?= SITE_URL ?>/category.php" id="filterForm">
+          <input type="hidden" name="cat" value="<?= htmlspecialchars($cat_slug) ?>">
+          <input type="hidden" name="sort" value="<?= htmlspecialchars($sort) ?>">
+          <div class="filter-sidebar">
+            <div class="filter-title"><i class="fa-solid fa-sliders me-2"></i>Filters</div>
 
-          <!-- Category Filter -->
-          <div class="filter-group">
-            <div class="filter-group-label">Category <i class="fa-solid fa-chevron-down"></i></div>
-            <label class="filter-option"><input type="checkbox" checked> Sofa Cover <span class="filter-count">24</span></label>
-            <label class="filter-option"><input type="checkbox"> Chair Cover <span class="filter-count">18</span></label>
-            <label class="filter-option"><input type="checkbox"> Table Covers <span class="filter-count">12</span></label>
-            <label class="filter-option"><input type="checkbox"> Dining Combo <span class="filter-count">8</span></label>
-            <label class="filter-option"><input type="checkbox"> AC Covers <span class="filter-count">6</span></label>
-          </div>
-
-          <!-- Price Filter -->
-          <div class="filter-group">
-            <div class="filter-group-label">Price Range <i class="fa-solid fa-chevron-down"></i></div>
-            <div class="price-range-inputs">
-              <input type="number" placeholder="Min ৳" id="priceMin"/>
-              <span>–</span>
-              <input type="number" placeholder="Max ৳" id="priceMax"/>
+            <!-- Category -->
+            <div class="filter-group">
+              <div class="filter-group-label">Category <i class="fa-solid fa-chevron-down"></i></div>
+              <?php foreach ($cat_meta as $slug => $meta): ?>
+              <label class="filter-option">
+                <input type="radio" name="cat" value="<?= $slug ?>"
+                       <?= $cat_slug === $slug ? 'checked' : '' ?>
+                       onchange="document.getElementById('filterForm').submit()">
+                <?= $meta['label'] ?>
+                <span class="filter-count"><?= $meta['count'] ?></span>
+              </label>
+              <?php endforeach; ?>
             </div>
-          </div>
 
-          <!-- Discount Filter -->
-          <div class="filter-group">
-            <div class="filter-group-label">Discount <i class="fa-solid fa-chevron-down"></i></div>
-            <label class="filter-option"><input type="checkbox"> 10% or more</label>
-            <label class="filter-option"><input type="checkbox"> 15% or more</label>
-            <label class="filter-option"><input type="checkbox"> 20% or more</label>
-          </div>
+            <!-- Price Range -->
+            <div class="filter-group">
+              <div class="filter-group-label">Price Range <i class="fa-solid fa-chevron-down"></i></div>
+              <div class="price-range-inputs">
+                <input type="number" name="price_min" placeholder="Min ৳" value="<?= $price_min ?: '' ?>"/>
+                <span>–</span>
+                <input type="number" name="price_max" placeholder="Max ৳" value="<?= $price_max < 99999 ? $price_max : '' ?>"/>
+              </div>
+            </div>
 
-          <!-- Rating Filter -->
-          <div class="filter-group">
-            <div class="filter-group-label">Rating <i class="fa-solid fa-chevron-down"></i></div>
-            <label class="filter-option"><input type="checkbox"> ⭐⭐⭐⭐⭐ (5)</label>
-            <label class="filter-option"><input type="checkbox"> ⭐⭐⭐⭐+ (4+)</label>
-            <label class="filter-option"><input type="checkbox"> ⭐⭐⭐+ (3+)</label>
-          </div>
+            <!-- Sort (mirrored in sidebar) -->
+            <div class="filter-group">
+              <div class="filter-group-label">Sort By <i class="fa-solid fa-chevron-down"></i></div>
+              <?php $sort_opts = ['default'=>'Default','price_asc'=>'Price: Low→High','price_desc'=>'Price: High→Low','discount'=>'Highest Discount','rating'=>'Best Rated']; ?>
+              <?php foreach ($sort_opts as $val => $label): ?>
+              <label class="filter-option">
+                <input type="radio" name="sort" value="<?= $val ?>" <?= $sort === $val ? 'checked' : '' ?>
+                       onchange="document.getElementById('filterForm').submit()">
+                <?= $label ?>
+              </label>
+              <?php endforeach; ?>
+            </div>
 
-          <button class="apply-filter-btn" id="applyFilter">Apply Filters</button>
-        </div>
+            <button type="submit" class="apply-filter-btn">Apply Filters</button>
+            <a href="<?= SITE_URL ?>/category.php<?= $cat_slug ? '?cat='.$cat_slug : '' ?>" class="d-block text-center mt-2" style="font-size:12px;color:var(--text-muted)">
+              Clear Filters
+            </a>
+          </div>
+        </form>
       </div>
 
       <!-- Products Area -->
       <div class="col-lg-10">
+
         <!-- Products Header -->
         <div class="products-header">
           <div>
-            <h5 class="section-title mb-0" id="catTitle">Sofa Cover</h5>
-            <p class="products-count mt-1"><strong id="productCountDisplay">24</strong> products found</p>
+            <h5 class="section-title mb-0"><?= htmlspecialchars($current_cat['label']) ?></h5>
+            <p class="products-count mt-1"><strong><?= $total_products ?></strong> products found</p>
           </div>
           <div class="d-flex align-items-center gap-2">
-            <select class="sort-select" id="sortSelect">
-              <option value="default">Default Sorting</option>
-              <option value="price_asc">Price: Low to High</option>
-              <option value="price_desc">Price: High to Low</option>
-              <option value="discount">Highest Discount</option>
-              <option value="rating">Best Rated</option>
-              <option value="newest">Newest First</option>
+            <select class="sort-select" onchange="window.location.href=this.value">
+              <?php foreach ($sort_opts as $val => $label):
+                $url = SITE_URL.'/category.php?'.http_build_query(array_merge($_GET, ['sort'=>$val, 'page'=>1]));
+              ?>
+              <option value="<?= $url ?>" <?= $sort === $val ? 'selected' : '' ?>><?= $label ?></option>
+              <?php endforeach; ?>
             </select>
             <div class="view-toggle">
               <button class="view-btn active" id="gridView" title="Grid View"><i class="fa-solid fa-grip"></i></button>
@@ -205,30 +158,57 @@
           </div>
         </div>
 
-        <!-- Active Filters -->
-        <div class="active-filters" id="activeFilters">
-          <div class="active-filter-tag">Sofa Cover <i class="fa-solid fa-xmark"></i></div>
-          <div class="active-filter-tag">15% OFF <i class="fa-solid fa-xmark"></i></div>
-        </div>
-
         <!-- Products Grid -->
-        <div class="row g-3" id="categoryProducts">
-          <!-- Populated by JS -->
+        <?php if (empty($products)): ?>
+          <div class="text-center py-5 text-muted">
+            <i class="fa-solid fa-box-open fa-3x mb-3 d-block"></i>
+            <h5>No products found</h5>
+            <p>Try adjusting your filters.</p>
+            <a href="<?= SITE_URL ?>/category.php" class="btn btn-primary mt-2">View All Products</a>
+          </div>
+        <?php else: ?>
+        <div class="row g-3" id="productsGrid">
+          <?php foreach ($products as $product): ?>
+            <?php include 'includes/product_card.php'; ?>
+          <?php endforeach; ?>
         </div>
+        <?php endif; ?>
 
         <!-- Pagination -->
-        <nav>
-          <ul class="pagination" id="pagination">
-            <li class="page-item disabled"><a class="page-link" href="#">‹</a></li>
-            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">›</a></li>
+        <?php if ($total_pages > 1): ?>
+        <nav class="mt-4">
+          <ul class="pagination">
+            <li class="page-item <?= $page <= 1 ? 'disabled' : '' ?>">
+              <a class="page-link" href="?<?= http_build_query(array_merge($_GET, ['page'=>$page-1])) ?>">‹</a>
+            </li>
+            <?php for ($p = 1; $p <= $total_pages; $p++): ?>
+            <li class="page-item <?= $p === $page ? 'active' : '' ?>">
+              <a class="page-link" href="?<?= http_build_query(array_merge($_GET, ['page'=>$p])) ?>"><?= $p ?></a>
+            </li>
+            <?php endfor; ?>
+            <li class="page-item <?= $page >= $total_pages ? 'disabled' : '' ?>">
+              <a class="page-link" href="?<?= http_build_query(array_merge($_GET, ['page'=>$page+1])) ?>">›</a>
+            </li>
           </ul>
         </nav>
+        <?php endif; ?>
+
       </div>
     </div>
   </div>
 </main>
+
+<script>
+document.getElementById('gridView').addEventListener('click', function() {
+    this.classList.add('active');
+    document.getElementById('listView').classList.remove('active');
+    document.getElementById('productsGrid').className = 'row g-3';
+});
+document.getElementById('listView').addEventListener('click', function() {
+    this.classList.add('active');
+    document.getElementById('gridView').classList.remove('active');
+    document.getElementById('productsGrid').className = 'row g-3 list-view';
+});
+</script>
 
 <?php include 'includes/footer.php'; ?>
