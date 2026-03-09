@@ -87,5 +87,29 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/main.js"></script>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // Render all products in category page
+        const container = document.getElementById('categoryProducts');
+        if (container) {
+          container.innerHTML = PRODUCTS.map(buildProductCard).join('');
+        }
+        // View toggle
+        document.getElementById('gridView').addEventListener('click', function() {
+          this.classList.add('active');
+          document.getElementById('listView').classList.remove('active');
+        });
+        document.getElementById('listView').addEventListener('click', function() {
+          this.classList.add('active');
+          document.getElementById('gridView').classList.remove('active');
+        });
+        // Sort
+        document.getElementById('sortSelect').addEventListener('change', function() {
+          // Placeholder for sort logic / AJAX call
+          console.log('Sort by:', this.value);
+        });
+      });
+  </script>
   </body>
 </html>

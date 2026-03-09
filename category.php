@@ -1,165 +1,64 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Category – ElegantTex</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Playfair+Display:wght@700&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="style.css"/>
-  <style>
-    /* ---- Category Page Extras ---- */
-    .page-breadcrumb {
-      background: var(--bg-light);
-      padding: 12px 0;
-      border-bottom: 1px solid var(--border);
-      font-size: 13px;
-    }
-    .page-breadcrumb a { color: var(--primary); font-weight: 600; }
-    .page-breadcrumb span { color: var(--text-muted); margin: 0 6px; }
+<?php include 'includes/header.php'; ?>
 
-    .filter-sidebar {
-      background: var(--white);
-      border-radius: var(--radius);
-      border: 1px solid var(--border);
-      padding: 20px;
-      box-shadow: var(--shadow);
-      position: sticky;
-      top: 80px;
-    }
-    .filter-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 16px;
-      font-weight: 700;
-      margin-bottom: 16px;
-      padding-bottom: 8px;
-      border-bottom: 2px solid var(--primary);
-      color: var(--dark);
-    }
-    .filter-group { margin-bottom: 20px; }
-    .filter-group-label {
-      font-weight: 800;
-      font-size: 13px;
-      color: var(--dark);
-      margin-bottom: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      cursor: pointer;
-    }
-    .filter-group-label i { font-size: 11px; color: var(--text-muted); }
-    .filter-option {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 8px;
-      font-size: 13px;
-      cursor: pointer;
-      color: var(--text);
-      transition: var(--transition);
-    }
-    .filter-option:hover { color: var(--primary); }
-    .filter-option input[type="checkbox"] { accent-color: var(--primary); width: 15px; height: 15px; }
-    .filter-count { color: var(--text-muted); font-size: 12px; margin-left: auto; }
+    <!-- Breadcrumb -->
+    <div class="page-breadcrumb">
+      <div class="container-fluid px-4">
+        <a href="index.html">Home</a>
+        <span>›</span>
+        <span id="breadcrumbCat">Category Name</span>
+      </div>
+    </div>
 
-    .price-range-inputs { display: flex; gap: 8px; align-items: center; }
-    .price-range-inputs input {
-      width: 100%;
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 6px 10px;
-      font-size: 13px;
-      outline: none;
-    }
-    .price-range-inputs input:focus { border-color: var(--primary); }
-    .apply-filter-btn {
-      width: 100%;
-      background: var(--primary);
-      color: #fff;
-      border: none;
-      padding: 10px;
-      border-radius: 8px;
-      font-weight: 800;
-      cursor: pointer;
-      transition: var(--transition);
-      font-size: 14px;
-    }
-    .apply-filter-btn:hover { background: var(--primary-dark); }
+    <!-- Main Content -->
+    <main class="py-4">
+      <div class="container-fluid px-4">
+        <div class="row g-3">
+          <!-- Sidebar Filter -->
+          <?php include 'includes/sidebar.php'; ?>
 
-    .products-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 16px;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-    .products-count { font-size: 14px; color: var(--text-muted); }
-    .products-count strong { color: var(--dark); }
-    .sort-select {
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 8px 12px;
-      font-size: 13px;
-      outline: none;
-      font-family: 'Nunito', sans-serif;
-      cursor: pointer;
-    }
-    .sort-select:focus { border-color: var(--primary); }
+          <!-- Products Area -->
+          <div class="col-lg-10">
+            <!-- Products Header -->
+            <div class="products-header">
+              <div>
+                <h5 class="section-title mb-0" id="catTitle">Category Name</h5>
+                <p class="products-count mt-1"><strong id="productCountDisplay">0</strong> products found</p>
+              </div>
+              <div class="d-flex align-items-center gap-2">
+                <select class="sort-select" id="sortSelect">
+                  <option value="default">Default Sorting</option>
+                  <option value="price_asc">Price: Low to High</option>
+                  <option value="price_desc">Price: High to Low</option>
+                  <option value="discount">Highest Discount</option>
+                  <option value="rating">Best Rated</option>
+                  <option value="newest">Newest First</option>
+                </select>
+                <div class="view-toggle">
+                  <button class="view-btn active" id="gridView" title="Grid View"><i class="fa-solid fa-grip"></i></button>
+                  <button class="view-btn" id="listView" title="List View"><i class="fa-solid fa-list"></i></button>
+                </div>
+              </div>
+            </div>
 
-    .view-toggle { display: flex; gap: 4px; }
-    .view-btn {
-      width: 34px; height: 34px;
-      border: 1px solid var(--border);
-      background: var(--white);
-      border-radius: 6px;
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer;
-      color: var(--text-muted);
-      transition: var(--transition);
-    }
-    .view-btn.active,
-    .view-btn:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
+            <!-- Active Filters -->
+            <div class="active-filters" id="activeFilters">
+              <!-- Populated by JS -->
+            </div>
 
-    /* Pagination */
-    .pagination { margin-top: 24px; justify-content: center; }
-    .page-link {
-      color: var(--primary);
-      border-color: var(--border);
-      font-weight: 700;
-      border-radius: 6px !important;
-      margin: 0 2px;
-    }
-    .page-item.active .page-link { background: var(--primary); border-color: var(--primary); }
-    .page-link:hover { background: var(--primary-light); color: var(--primary); }
+            <!-- Products Grid -->
+            <div class="row g-3" id="categoryProducts">
+              <!-- Populated by JS -->
+            </div>
 
-    /* Active filters */
-    .active-filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
-    .active-filter-tag {
-      background: var(--primary-light);
-      color: var(--primary);
-      border: 1px solid rgba(255,4,158,0.2);
-      border-radius: 20px;
-      padding: 4px 12px;
-      font-size: 12px;
-      font-weight: 700;
-      display: flex; align-items: center; gap: 6px;
-    }
-    .active-filter-tag i { cursor: pointer; }
-    .active-filter-tag i:hover { color: var(--primary-dark); }
-  </style>
-</head>
-<body>
+            <!-- Pagination -->
+            <nav>
+              <ul class="pagination" id="pagination">
+                <!-- Populated by JS -->
+              </ul>
+            </nav>
 
 <!-- Announcement Bar -->
-<div class="announcement-bar">
-  <div class="announcement-inner">
-    <i class="fa-solid fa-couch me-2"></i>
-    GET UPTO 17% DISCOUNT RIGHT NOW &nbsp;|&nbsp; USE CODE: <strong>ELEGANT17</strong>
-    <i class="fa-solid fa-couch ms-2"></i>
-  </div>
-</div>
+<?php include 'includes/announce.php'; ?>
 
 <!-- Header -->
 <header class="site-header">
@@ -226,7 +125,7 @@
 <!-- Breadcrumb -->
 <div class="page-breadcrumb">
   <div class="container-fluid px-4">
-    <a href="index.html">Home</a>
+    <a href="index.php">Home</a>
     <span>›</span>
     <span id="breadcrumbCat">Sofa Cover</span>
   </div>
@@ -332,36 +231,4 @@
   </div>
 </main>
 
-<!-- WhatsApp Float -->
-<a href="https://wa.me/8801896224057" class="whatsapp-float" target="_blank">
-  <i class="fa-brands fa-whatsapp"></i>
-</a>
-<div class="cart-toast" id="cartToast"><i class="fa-solid fa-check-circle me-2"></i>Added to cart!</div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
-<script src="main.js"></script>
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    // Render all products in category page
-    const container = document.getElementById('categoryProducts');
-    if (container) {
-      container.innerHTML = PRODUCTS.map(buildProductCard).join('');
-    }
-    // View toggle
-    document.getElementById('gridView').addEventListener('click', function() {
-      this.classList.add('active');
-      document.getElementById('listView').classList.remove('active');
-    });
-    document.getElementById('listView').addEventListener('click', function() {
-      this.classList.add('active');
-      document.getElementById('gridView').classList.remove('active');
-    });
-    // Sort
-    document.getElementById('sortSelect').addEventListener('change', function() {
-      // Placeholder for sort logic / AJAX call
-      console.log('Sort by:', this.value);
-    });
-  });
-</script>
-</body>
-</html>
+<?php include 'includes/footer.php'; ?>

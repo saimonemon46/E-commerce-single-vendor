@@ -1,11 +1,11 @@
-<?php include 'includes/header.php'; ?>
+  <?php include 'includes/header.php'; ?>
 
     <!-- ===== FEATURED PRODUCTS ===== -->
     <section class="products-section py-4">
       <div class="container-fluid px-4">
         <div class="section-header">
           <h3 class="section-title">Featured Products</h3>
-          <a href="products.html" class="section-link"
+          <a href="products.php" class="section-link"
             >View All <i class="fa-solid fa-arrow-right"></i
           ></a>
         </div>
@@ -26,7 +26,7 @@
                 <p class="promo-sub">সোফায় বসে</p>
                 <p class="promo-main">সাগরের ফিল</p>
               </div>
-              <a href="category.html?cat=sofa-cover" class="promo-cta"
+              <a href="category.php?cat=sofa-cover" class="promo-cta"
                 >ক্লিক করুন</a
               >
             </div>
@@ -38,7 +38,7 @@
                 <p class="promo-sub">পাহাড়ে বসে</p>
                 <p class="promo-main">অস্থির ফিল</p>
               </div>
-              <a href="category.html?cat=sofa-cover" class="promo-cta"
+              <a href="category.php?cat=sofa-cover" class="promo-cta"
                 >ক্লিক করুন</a
               >
             </div>
@@ -50,7 +50,7 @@
                 <p class="promo-sub">হিম শীতল পাহাড়ে</p>
                 <p class="promo-main">যদি বসা যায়</p>
               </div>
-              <a href="category.html?cat=sofa-cover" class="promo-cta"
+              <a href="category.php?cat=sofa-cover" class="promo-cta"
                 >ক্লিক করুন</a
               >
             </div>
@@ -64,7 +64,7 @@
       <div class="container-fluid px-4">
         <div class="section-header">
           <h3 class="section-title">Best Selling</h3>
-          <a href="best-selling.html" class="section-link"
+          <a href="best-selling.php" class="section-link"
             >View All <i class="fa-solid fa-arrow-right"></i
           ></a>
         </div>

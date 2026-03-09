@@ -5,31 +5,31 @@
           <!-- Sidebar Categories -->
           <div class="col-lg-2 d-none d-lg-block">
             <div class="sidebar-categories">
-              <a href="category.html?cat=sofa-cover" class="sidebar-cat-item">
+              <a href="category.php?cat=sofa-cover" class="sidebar-cat-item">
                 <i class="fa-solid fa-couch"></i> Sofa Cover
               </a>
-              <a href="category.html?cat=chair-cover" class="sidebar-cat-item">
+              <a href="category.php?cat=chair-cover" class="sidebar-cat-item">
                 <i class="fa-solid fa-chair"></i> Chair Cover
               </a>
-              <a href="category.html?cat=table-covers" class="sidebar-cat-item">
+              <a href="category.php?cat=table-covers" class="sidebar-cat-item">
                 <i class="fa-solid fa-table"></i> Table Covers
               </a>
-              <a href="category.html?cat=dining-combo" class="sidebar-cat-item">
+              <a href="category.php?cat=dining-combo" class="sidebar-cat-item">
                 <i class="fa-solid fa-utensils"></i> Dining Combo (3D)
               </a>
-              <a href="category.html?cat=ac-covers" class="sidebar-cat-item">
+              <a href="category.php?cat=ac-covers" class="sidebar-cat-item">
                 <i class="fa-solid fa-wind"></i> AC Covers
               </a>
-              <a href="category.html?cat=tv-covers" class="sidebar-cat-item">
+              <a href="category.php?cat=tv-covers" class="sidebar-cat-item">
                 <i class="fa-solid fa-tv"></i> TV Covers
               </a>
               <a
-                href="category.html?cat=cushion-covers"
+                href="category.php?cat=cushion-covers"
                 class="sidebar-cat-item"
               >
                 <i class="fa-solid fa-circle"></i> Cushion Covers
               </a>
-              <a href="category.html?cat=carpet" class="sidebar-cat-item">
+              <a href="category.php?cat=carpet" class="sidebar-cat-item">
                 <i class="fa-solid fa-rug"></i> Carpet
               </a>
             </div>
@@ -70,7 +70,7 @@
                         Premium sofa covers that transform your living space
                       </p>
                       <a
-                        href="category.html?cat=sofa-cover"
+                        href="category.php?cat=sofa-cover"
                         class="btn btn-white-outline"
                         >Shop Now <i class="fa-solid fa-arrow-right ms-1"></i
                       ></a>
@@ -84,7 +84,7 @@
                       <h2>Velvet Chair<br />Covers</h2>
                       <p>Luxurious velvet covers for your dining chairs</p>
                       <a
-                        href="category.html?cat=chair-cover"
+                        href="category.php?cat=chair-cover"
                         class="btn btn-white-outline"
                         >Shop Now <i class="fa-solid fa-arrow-right ms-1"></i
                       ></a>
@@ -100,7 +100,7 @@
                         Complete table & chair cover sets in stunning 3D prints
                       </p>
                       <a
-                        href="category.html?cat=dining-combo"
+                        href="category.php?cat=dining-combo"
                         class="btn btn-white-outline"
                         >Shop Now <i class="fa-solid fa-arrow-right ms-1"></i
                       ></a>
@@ -148,7 +148,7 @@
       <div class="container-fluid px-4">
         <div class="category-scroll-wrapper">
           <div class="category-scroll" id="categoryScroll">
-            <a href="category.html?cat=sofa-cover" class="cat-pill">
+            <a href="category.php?cat=sofa-cover" class="cat-pill">
               <div
                 class="cat-pill-img"
                 style="
@@ -159,7 +159,7 @@
               </div>
               <span>Sofa Cover</span>
             </a>
-            <a href="category.html?cat=chair-cover" class="cat-pill">
+            <a href="category.php?cat=chair-cover" class="cat-pill">
               <div
                 class="cat-pill-img"
                 style="
@@ -170,7 +170,7 @@
               </div>
               <span>Chair Cover</span>
             </a>
-            <a href="category.html?cat=table-covers" class="cat-pill">
+            <a href="category.php?cat=table-covers" class="cat-pill">
               <div
                 class="cat-pill-img"
                 style="
@@ -181,7 +181,7 @@
               </div>
               <span>Table Covers</span>
             </a>
-            <a href="category.html?cat=dining-combo" class="cat-pill">
+            <a href="category.php?cat=dining-combo" class="cat-pill">
               <div
                 class="cat-pill-img"
                 style="
@@ -192,7 +192,7 @@
               </div>
               <span>Dining Combo</span>
             </a>
-            <a href="category.html?cat=ac-covers" class="cat-pill">
+            <a href="category.php?cat=ac-covers" class="cat-pill">
               <div
                 class="cat-pill-img"
                 style="
@@ -203,7 +203,7 @@
               </div>
               <span>AC Covers</span>
             </a>
-            <a href="category.html?cat=tv-covers" class="cat-pill">
+            <a href="category.php?cat=tv-covers" class="cat-pill">
               <div
                 class="cat-pill-img"
                 style="
@@ -214,7 +214,7 @@
               </div>
               <span>TV Covers</span>
             </a>
-            <a href="category.html?cat=cushion-covers" class="cat-pill">
+            <a href="category.php?cat=cushion-covers" class="cat-pill">
               <div
                 class="cat-pill-img"
                 style="
@@ -225,7 +225,7 @@
               </div>
               <span>Cushion Covers</span>
             </a>
-            <a href="category.html?cat=carpet" class="cat-pill">
+            <a href="category.php?cat=carpet" class="cat-pill">
               <div
                 class="cat-pill-img"
                 style="
