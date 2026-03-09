@@ -102,7 +102,7 @@ $categories = [
           </div>
           <div class="category-dropdown" id="categoryDropdown">
             <?php foreach ($categories as $cat): ?>
-            <a href="<?= SITE_URL ?>/category.php?cat=<?= $cat['slug'] ?>">
+            <a href="<?= htmlspecialchars(SITE_URL . '/category.php?cat=' . urlencode($cat['slug'])) ?>">
               <i class="fa-solid <?= $cat['icon'] ?> me-2"></i><?= $cat['label'] ?>
             </a>
             <?php endforeach; ?>

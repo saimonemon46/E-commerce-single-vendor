@@ -7,10 +7,10 @@
 // ----- Site Info -----
 define('SITE_NAME',     'ElegantTex');
 define('SITE_TAGLINE',  "Bangladesh's #1 Furniture Cover Brand");
-define('SITE_URL',      'http://localhost/elegantex');
+define('SITE_URL',      'http://localhost/ECom_SingleVendor/');
 define('SITE_EMAIL',    'info@eleganttex.com.bd');
-define('HELPLINE',      '+8801896224057');
-define('WHATSAPP',      '+8801896224057');
+define('HELPLINE',      '+8801622015799');
+define('WHATSAPP',      '+8801622015799');
 define('CURRENCY',      '৳');
 define('SHIPPING_FEE',  60);
 
