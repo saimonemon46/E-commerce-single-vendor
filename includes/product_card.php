@@ -1,54 +1,90 @@
-    <!-- ===== NAVBAR ===== -->
-    <nav class="main-nav">
-      <div class="container-fluid px-4">
-        <div class="row g-0 align-items-stretch">
-          <!-- Category Dropdown Toggle -->
-          <div class="col-auto">
-            <div class="category-toggle" id="categoryToggle">
-              <i class="fa-solid fa-bars me-2"></i> Categories
-              <span class="see-all">(See All)</span>
-              <i class="fa-solid fa-chevron-down ms-2 small"></i>
-            </div>
-            <!-- Category Dropdown -->
-            <div class="category-dropdown" id="categoryDropdown">
-              <a href="category.php?cat=sofa-cover"
-                ><i class="fa-solid fa-couch me-2"></i>Sofa Cover</a
-              >
-              <a href="category.php?cat=chair-cover"
-                ><i class="fa-solid fa-chair me-2"></i>Chair Cover</a
-              >
-              <a href="category.php?cat=table-covers"
-                ><i class="fa-solid fa-table me-2"></i>Table Covers</a
-              >
-              <a href="category.php?cat=dining-combo"
-                ><i class="fa-solid fa-utensils me-2"></i>Trendy Dining Combo
-                (3D)</a
-              >
-              <a href="category.php?cat=ac-covers"
-                ><i class="fa-solid fa-wind me-2"></i>AC Covers</a
-              >
-              <a href="category.php?cat=tv-covers"
-                ><i class="fa-solid fa-tv me-2"></i>TV Covers</a
-              >
-              <a href="category.php?cat=cushion-covers"
-                ><i class="fa-solid fa-circle me-2"></i>Cushion Covers</a
-              >
-              <a href="category.php?cat=carpet"
-                ><i class="fa-solid fa-rug me-2"></i>Carpet by ElegantTex</a
-              >
-            </div>
-          </div>
-          <!-- Nav Links -->
-          <div class="col nav-links-wrapper">
-            <ul class="nav-links">
-              <li><a href="index.php" class="active">Home</a></li>
-              <li><a href="best-selling.php">Best Selling</a></li>
-              <li><a href="wholesale.php">Wholesale</a></li>
-              <li><a href="new-collection.php">New Collection</a></li>
-              <li><a href="contact.php">Contact</a></li>
-              <li><a href="blog.php">Blog</a></li>
-            </ul>
-          </div>
-        </div>
+<?php
+// ============================================================
+//  ElegantTex — includes/product_card.php
+//  Reusable product card partial.
+//  Pass $product array with keys:
+//    id, name, price, compare_price, discount_pct,
+//    badge, badge_type ('sale'|'new'), rating, reviews, emoji
+//
+//  Usage:
+//    foreach ($products as $product) {
+//        include 'includes/product_card.php';
+//    }
+// ============================================================
+
+// Safely extract values with fallbacks
+$p_id       = $product['id']            ?? 0;
+$p_name     = $product['name']          ?? 'Product';
+$p_price    = $product['price']         ?? 0;
+$p_old      = $product['compare_price'] ?? 0;
+$p_discount = $product['discount_pct']  ?? 0;
+$p_badge    = $product['badge']         ?? '';
+$p_btype    = $product['badge_type']    ?? 'sale';
+$p_rating   = $product['rating']        ?? 0;
+$p_reviews  = $product['reviews']       ?? 0;
+$p_emoji    = $product['emoji']         ?? '🛋️';
+$p_image    = $product['image']         ?? '';
+
+$badge_class = ($p_btype === 'new') ? 'badge-new' : 'badge-sale';
+
+// Build star HTML
+function render_stars(float $rating): string {
+    $html = '';
+    for ($i = 1; $i <= 5; $i++) {
+        if ($rating >= $i)         $html .= '<i class="fa-solid fa-star"></i>';
+        elseif ($rating >= $i-0.5) $html .= '<i class="fa-solid fa-star-half-stroke"></i>';
+        else                       $html .= '<i class="fa-regular fa-star"></i>';
+    }
+    return $html;
+}
+?>
+<div class="col-6 col-md-4 col-lg-3">
+  <div class="product-card" onclick="window.location='<?= SITE_URL ?>/product.php?id=<?= $p_id ?>'">
+
+    <div class="product-img-wrap">
+      <?php if ($p_image): ?>
+        <img src="<?= htmlspecialchars($p_image) ?>" alt="<?= htmlspecialchars($p_name) ?>" loading="lazy"/>
+      <?php else: ?>
+        <span class="product-emoji"><?= $p_emoji ?></span>
+      <?php endif; ?>
+
+      <?php if ($p_badge): ?>
+        <span class="product-badge <?= $badge_class ?>"><?= htmlspecialchars($p_badge) ?></span>
+      <?php endif; ?>
+
+      <div class="product-actions">
+        <button class="product-action-btn" title="Add to Wishlist"
+                onclick="event.stopPropagation(); addToWishlist(<?= $p_id ?>)">
+          <i class="fa-regular fa-heart"></i>
+        </button>
+        <button class="product-action-btn" title="Quick View"
+                onclick="event.stopPropagation(); quickView(<?= $p_id ?>)">
+          <i class="fa-regular fa-eye"></i>
+        </button>
       </div>
-    </nav>
+    </div>
+
+    <div class="product-info">
+      <p class="product-name" title="<?= htmlspecialchars($p_name) ?>"><?= htmlspecialchars($p_name) ?></p>
+
+      <div class="product-rating">
+        <?= render_stars((float)$p_rating) ?>
+        <span>(<?= (int)$p_reviews ?>)</span>
+      </div>
+
+      <div class="product-price-row">
+        <div>
+          <span class="price-new"><?= CURRENCY ?><?= number_format($p_price, 2) ?></span>
+          <?php if ($p_old > 0): ?>
+            <span class="price-old"><?= CURRENCY ?><?= number_format($p_old, 2) ?></span>
+          <?php endif; ?>
+        </div>
+        <button class="add-to-cart-btn"
+                onclick="event.stopPropagation(); addToCart(<?= $p_id ?>)">
+          <i class="fa-solid fa-cart-plus me-1"></i>Add
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -332,23 +332,15 @@ function renderBestSelling() {
 function initCategoryToggle() {
   const toggle = document.getElementById("categoryToggle");
   const dropdown = document.getElementById("categoryDropdown");
-
   if (!toggle || !dropdown) return;
 
-  // Toggle dropdown on click
   toggle.addEventListener("click", (e) => {
     e.stopPropagation();
     dropdown.classList.toggle("show");
   });
-
-  // Close dropdown when clicking outside
-  document.addEventListener("click", (e) => {
-    if (!toggle.contains(e.target) && !dropdown.contains(e.target)) {
-      dropdown.classList.remove("show");
-    }
+  document.addEventListener("click", () => {
+    dropdown.classList.remove("show");
   });
-
-  // Prevent dropdown from closing when clicking inside it
   dropdown.addEventListener("click", (e) => e.stopPropagation());
 }
 

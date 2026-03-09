@@ -22,7 +22,7 @@ if (!isset($extra_css))  $extra_css  = '';
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Playfair+Display:wght@700&display=swap" rel="stylesheet"/>
   <!-- Main stylesheet -->
-  <link rel="stylesheet" href="<?= ASSETS ?>/css/style.css"/>
+  <link rel="stylesheet" href="assets/css/style.css"/>
   <!-- Page-specific CSS (optional) -->
   <?php if ($extra_css): ?>
   <style><?= $extra_css ?></style>
